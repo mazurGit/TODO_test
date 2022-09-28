@@ -8,7 +8,7 @@ const NativeStack = createNativeStackNavigator<RootNavigationParamList>();
 
 const Navigation: FC = () => {
   return (
-    <NativeStack.Navigator>
+    <NativeStack.Navigator screenOptions={{headerShown: false}}>
       <NativeStack.Screen component={TodoList} name={RootScreenName.TODO} />
       <NativeStack.Screen component={AddItem} name={RootScreenName.ADD_ITEM} />
     </NativeStack.Navigator>
