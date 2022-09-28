@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
 import {useState, useAppDispatch} from '../../hooks/hooks';
+import uuid from 'react-native-uuid';
 import {
   View,
   TextInput,
@@ -42,6 +43,8 @@ const AddItem: FC = () => {
         title,
         description,
         image: pictureUri,
+        id: uuid.v4().toString(),
+        done: false,
       }),
     );
     resetFields();
