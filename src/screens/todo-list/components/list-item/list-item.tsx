@@ -9,15 +9,17 @@ import {
   Image,
 } from '../../../../components/components';
 import {createStyles} from './styles';
-import {images} from '../../../../assets/assets';
 import dayjs from 'dayjs';
+import {StyleProp, ViewStyle} from 'react-native';
+import {TodoItem} from '../../../../common/types/types';
 
 type Props = {
-  title: string;
-  description: string;
+  item: TodoItem;
+  contentContainerStyle?: StyleProp<ViewStyle>;
 };
 
-const ListItem: FC<Props> = ({title, description}) => {
+const ListItem: FC<Props> = ({item, contentContainerStyle}) => {
+  const {title, description, image: imageBase64} = item;
   const [done, setDone] = useState(false);
   const styles = useMemo(() => createStyles(done), [done]);
 
@@ -26,18 +28,21 @@ const ListItem: FC<Props> = ({title, description}) => {
   };
 
   return (
-    <View style={styles.wrapper}>
+    <View style={[styles.wrapper, contentContainerStyle]}>
       <TouchableOpacity onPress={onPress} style={styles.checkIcon}>
-        {done ? <CircleIcon /> : <CheckIcon />}
+        {done ? <CheckIcon /> : <CircleIcon />}
       </TouchableOpacity>
       <View style={styles.textSection}>
         <Text style={styles.title} numberOfLines={1}>
           {title}
         </Text>
         <Text style={styles.description}>{description} </Text>
-        <Text style={styles.date}>{!done && dayjs().format('llll')}</Text>
+        <Text style={styles.date}>{done && dayjs().format('llll')}</Text>
       </View>
-      <Image source={images.list_item} style={styles.image} />
+      <Image
+        source={{uri: `data:image/jpeg;base64,${imageBase64}`}}
+        style={styles.image}
+      />
     </View>
   );
 };

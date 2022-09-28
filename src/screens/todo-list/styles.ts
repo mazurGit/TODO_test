@@ -5,6 +5,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 10,
   },
+  todoItem: {
+    marginTop: 10,
+  },
 });
 
 export {styles};
