@@ -5,7 +5,7 @@ const createStyles = (done: boolean) => {
   return StyleSheet.create({
     wrapper: {
       width: '100%',
-      backgroundColor: done ? colors.white : colors.green,
+      backgroundColor: done ? colors.green : colors.white,
       flexDirection: 'row',
       borderRadius: 15,
       padding: 7,
@@ -13,14 +13,14 @@ const createStyles = (done: boolean) => {
     },
     checkIcon: {
       alignSelf: 'center',
-      flex: 0.1,
+      width: '8%',
     },
     textSection: {
-      flex: 0.6,
+      flex: 0.9,
       justifyContent: 'space-between',
     },
     title: {
-      textDecorationLine: done ? 'none' : 'line-through',
+      textDecorationLine: done ? 'line-through' : 'none',
       alignSelf: 'center',
       fontSize: 20,
       fontWeight: '800',
@@ -33,7 +33,9 @@ const createStyles = (done: boolean) => {
       fontWeight: '700',
     },
     image: {
-      flex: 0.25,
+      width: 70,
+      height: 70,
+      borderRadius: 50,
       alignSelf: 'center',
       resizeMode: 'contain',
     },

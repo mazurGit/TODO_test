@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {useState} from '../../hooks/hooks';
+import {useState, useAppDispatch} from '../../hooks/hooks';
 import {
   View,
   TextInput,
@@ -10,9 +10,14 @@ import {
 } from '../../components/components';
 import {styles} from './styles';
 import {launchImageLibrary} from 'react-native-image-picker';
+import {addItem} from '../../store/actions';
 
 const AddItem: FC = () => {
+  const dispatch = useAppDispatch();
   const [pictureUri, setPictureUri] = useState('');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+
   const onAddPicture = async () => {
     const result = await launchImageLibrary({
       mediaType: 'photo',
@@ -24,6 +29,22 @@ const AddItem: FC = () => {
       const pictureBase64 = result.assets[0].base64 as string;
       setPictureUri(pictureBase64);
     }
+  };
+
+  const resetFields = () => {
+    setPictureUri('');
+    setTitle('');
+    setDescription('');
+  };
+  const onItemCreate = () => {
+    dispatch(
+      addItem({
+        title,
+        description,
+        image: pictureUri,
+      }),
+    );
+    resetFields();
   };
 
   return (
@@ -40,8 +61,15 @@ const AddItem: FC = () => {
           </TouchableOpacity>
         )}
       </View>
-      <TextInput placeholder="Заголовок" style={styles.input} />
       <TextInput
+        value={title}
+        placeholder="Заголовок"
+        style={styles.input}
+        onChangeText={setTitle}
+      />
+      <TextInput
+        value={description}
+        onChangeText={setDescription}
         style={[styles.input, styles.description]}
         placeholder="Що потрібно зробити"
         multiline={true}
@@ -49,9 +77,7 @@ const AddItem: FC = () => {
       <Button
         contentContainerStyle={styles.createBtn}
         label="Створити"
-        onPress={() => {
-          // TODO
-        }}
+        onPress={onItemCreate}
       />
     </View>
   );
