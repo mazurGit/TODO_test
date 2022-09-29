@@ -27,7 +27,6 @@ const TodoList: FC = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     navigation.setOptions({
-      headerShown: true,
       headerTitle: '',
       headerBackVisible: true,
       headerStyle: {backgroundColor: colors.gray},

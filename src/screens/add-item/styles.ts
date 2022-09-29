@@ -6,7 +6,7 @@ const {height} = Dimensions.get('screen');
 const styles = StyleSheet.create({
   wrapper: {
     width: '100%',
-    height: height * 0.4,
+    minHeight: height * 0.4,
     borderRadius: 15,
     backgroundColor: colors.white,
     paddingVertical: 10,
@@ -46,6 +46,11 @@ const styles = StyleSheet.create({
   createBtn: {
     alignSelf: 'center',
     marginTop: 10,
+  },
+  error: {
+    color: colors.red,
+    fontSize: 14,
+    textAlign: 'center',
   },
 });
 
