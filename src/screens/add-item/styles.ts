@@ -12,15 +12,18 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     justifyContent: 'space-between',
     paddingHorizontal: 10,
+    borderWidth: 1,
   },
   pictureWrapper: {
-    borderRadius: 50,
     alignSelf: 'center',
     width: 100,
     height: 100,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: colors.gray,
+    borderWidth: 1,
+    borderColor: colors.dim_gray,
+    overflow: 'hidden',
   },
   imageContainer: {
     width: 100,
@@ -32,6 +35,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginTop: 5,
     backgroundColor: colors.gray,
+    borderWidth: 1,
+    borderColor: colors.dim_gray,
   },
   description: {
     minHeight: 100,

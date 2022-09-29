@@ -8,9 +8,13 @@ const styles = StyleSheet.create({
     padding: 8,
     backgroundColor: colors.button,
     alignSelf: 'baseline',
+    alignItems: 'center',
+  },
+  label: {
+    fontSize: 18,
   },
   btnRipple: {
-    color: colors.light_blue,
+    color: colors.dim_gray,
     borderless: true,
   },
 });
