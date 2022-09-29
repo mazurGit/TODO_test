@@ -8,7 +8,7 @@ import {useAppSelector, useAppDispatch} from '../../../../hooks/hooks';
 import {setStatusFilter} from '../../../../store/actions';
 
 const buttons = [
-  {name: StatusButtonSelector.ALL, label: 'All'},
+  {name: StatusButtonSelector.ALL, label: 'Усі'},
   {name: StatusButtonSelector.DONE, label: 'Виконані'},
   {name: StatusButtonSelector.UNDONE, label: 'Не виконані'},
 ];
