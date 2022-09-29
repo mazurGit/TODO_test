@@ -7,12 +7,13 @@ import {
   CircleIcon,
   TouchableOpacity,
   Image,
+  TrashIcon,
 } from '../../../../components/components';
 import {createStyles} from './styles';
 import dayjs from 'dayjs';
 import {StyleProp, ViewStyle} from 'react-native';
 import {TodoItem} from '../../../../common/types/types';
-import {changeItemStatus} from '../../../../store/actions';
+import {changeItemStatus, removeItemById} from '../../../../store/actions';
 
 type Props = {
   item: TodoItem;
@@ -28,22 +29,29 @@ const ListItem: FC<Props> = ({item, contentContainerStyle}) => {
     dispatch(changeItemStatus(id));
   };
 
+  const onDelete = () => {
+    dispatch(removeItemById(id));
+  };
+
   return (
-    <View style={[styles.wrapper, contentContainerStyle]}>
-      <TouchableOpacity onPress={onPress} style={styles.checkIcon}>
-        {done ? <CheckIcon /> : <CircleIcon />}
-      </TouchableOpacity>
-      <View style={styles.textSection}>
-        <Text style={styles.title} numberOfLines={1}>
-          {title}
-        </Text>
-        <Text style={styles.description}>{description} </Text>
-        <Text style={styles.date}>{done && dayjs().format('llll')}</Text>
+    <View style={styles.wrapper}>
+      <View style={[styles.cardContentWrapper, contentContainerStyle]}>
+        <TouchableOpacity onPress={onPress} style={styles.checkIcon}>
+          {done ? <CheckIcon /> : <CircleIcon />}
+        </TouchableOpacity>
+        <View style={styles.textSection}>
+          <Text style={styles.title} numberOfLines={1}>
+            {title}
+          </Text>
+          <Text style={styles.description}>{description} </Text>
+          <Text style={styles.date}>{done && dayjs().format('llll')}</Text>
+        </View>
+        <Image
+          source={{uri: `data:image/jpeg;base64,${imageBase64}`}}
+          style={styles.image}
+        />
       </View>
-      <Image
-        source={{uri: `data:image/jpeg;base64,${imageBase64}`}}
-        style={styles.image}
-      />
+      <TrashIcon style={styles.trashIcon} onPress={onDelete} />
     </View>
   );
 };
