@@ -11,6 +11,7 @@ import {
 import {styles} from './styles';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {addItem} from '../../store/actions';
+import { colors } from '../../common/constants/colors';
 
 const AddItem: FC = () => {
   const dispatch = useAppDispatch();
@@ -64,9 +65,10 @@ const AddItem: FC = () => {
       </View>
       <TextInput
         value={title}
-        placeholder="Заголовок"
+        placeholder="Заголовок для завдання"
         style={styles.input}
         onChangeText={setTitle}
+        placeholderTextColor={colors.dim_gray}
       />
       <TextInput
         value={description}
@@ -74,6 +76,7 @@ const AddItem: FC = () => {
         style={[styles.input, styles.description]}
         placeholder="Що потрібно зробити"
         multiline={true}
+        placeholderTextColor={colors.dim_gray}
       />
       <Button
         contentContainerStyle={styles.createBtn}

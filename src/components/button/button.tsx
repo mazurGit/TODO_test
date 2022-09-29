@@ -12,7 +12,7 @@ const Button: FC<Props> = ({label, onPress, contentContainerStyle}) => {
   return (
     <View style={[styles.wrapper, contentContainerStyle]}>
       <Pressable android_ripple={styles.btnRipple} onPress={onPress}>
-        <Text>{label}</Text>
+        <Text style={styles.label}>{label}</Text>
       </Pressable>
     </View>
   );
