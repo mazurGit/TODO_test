@@ -28,7 +28,6 @@ const TodoList: FC = () => {
   useEffect(() => {
     navigation.setOptions({
       headerTitle: '',
-      headerBackVisible: true,
       headerStyle: {backgroundColor: colors.gray},
       headerSearchBarOptions: {
         onChangeText: ({nativeEvent: {text}}) => dispatch(setSearchValue(text)),
