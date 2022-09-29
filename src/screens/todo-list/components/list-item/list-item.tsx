@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {useState, useMemo} from '../../../../hooks/hooks';
+import {useMemo, useAppDispatch} from '../../../../hooks/hooks';
 import {
   View,
   Text,
@@ -12,6 +12,7 @@ import {createStyles} from './styles';
 import dayjs from 'dayjs';
 import {StyleProp, ViewStyle} from 'react-native';
 import {TodoItem} from '../../../../common/types/types';
+import {changeItemStatus} from '../../../../store/actions';
 
 type Props = {
   item: TodoItem;
@@ -19,12 +20,12 @@ type Props = {
 };
 
 const ListItem: FC<Props> = ({item, contentContainerStyle}) => {
-  const {title, description, image: imageBase64} = item;
-  const [done, setDone] = useState(false);
+  const dispatch = useAppDispatch();
+  const {title, description, image: imageBase64, id, done} = item;
   const styles = useMemo(() => createStyles(done), [done]);
 
   const onPress = () => {
-    setDone(prevState => !prevState);
+    dispatch(changeItemStatus(id));
   };
 
   return (

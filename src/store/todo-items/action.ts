@@ -15,4 +15,6 @@ const addItem = createAction<PrepareAction<TodoItem>>(
   },
 );
 
-export {addItem};
+const changeItemStatus = createAction<TodoItem['id']>(ActionType.CHANGE_STATUS);
+
+export {addItem, changeItemStatus};
