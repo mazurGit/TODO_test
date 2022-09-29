@@ -6,4 +6,6 @@ const setStatusFilter = createAction<StatusButtonSelector>(
   ActionType.ADD_STATUS_FILTER,
 );
 
-export {setStatusFilter};
+const setSearchValue = createAction<string>(ActionType.ADD_VALUE_FILTER);
+
+export {setStatusFilter, setSearchValue};

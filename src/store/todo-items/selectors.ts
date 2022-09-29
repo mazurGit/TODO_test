@@ -6,15 +6,18 @@ const selectItems = (state: RootState) => state.todoItems.items;
 
 const selectFilteredItems = createSelector(
   selectItems,
-  (state: RootState) => state.filters.status,
-  (items, statusFilter) => {
-    switch (statusFilter) {
+  (state: RootState) => state.filters,
+  (items, {status, searchValue}) => {
+    const searchedItems = items.filter(
+      ({title}) => title.toUpperCase().indexOf(searchValue.toUpperCase()) > -1,
+    );
+    switch (status) {
       case StatusButtonSelector.DONE:
-        return items.filter(item => item.done);
+        return searchedItems.filter(item => item.done);
       case StatusButtonSelector.UNDONE:
-        return items.filter(item => !item.done);
+        return searchedItems.filter(item => !item.done);
       default:
-        return items;
+        return searchedItems;
     }
   },
 );
