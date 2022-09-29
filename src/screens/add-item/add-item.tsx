@@ -21,8 +21,8 @@ const AddItem: FC = () => {
   const onAddPicture = async () => {
     const result = await launchImageLibrary({
       mediaType: 'photo',
-      maxHeight: 70,
-      maxWidth: 70,
+      maxHeight: 100,
+      maxWidth: 100,
       includeBase64: true,
     });
     if (result.assets) {
@@ -42,6 +42,7 @@ const AddItem: FC = () => {
         title,
         description,
         image: pictureUri,
+        done: false,
       }),
     );
     resetFields();
