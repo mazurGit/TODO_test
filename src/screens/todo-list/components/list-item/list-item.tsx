@@ -25,18 +25,18 @@ const ListItem: FC<Props> = ({item, contentContainerStyle}) => {
   const {title, description, image: imageBase64, id, done} = item;
   const styles = useMemo(() => createStyles(done), [done]);
 
-  const onPress = () => {
+  const onPressComplete = () => {
     dispatch(changeItemStatus(id));
   };
 
-  const onDelete = () => {
+  const onDeletePress = () => {
     dispatch(removeItemById(id));
   };
 
   return (
     <View style={styles.wrapper}>
       <View style={[styles.cardContentWrapper, contentContainerStyle]}>
-        <TouchableOpacity onPress={onPress} style={styles.checkIcon}>
+        <TouchableOpacity onPress={onPressComplete} style={styles.checkIcon}>
           {done ? <CheckIcon /> : <CircleIcon />}
         </TouchableOpacity>
         <View style={styles.textSection}>
@@ -51,7 +51,7 @@ const ListItem: FC<Props> = ({item, contentContainerStyle}) => {
           style={styles.image}
         />
       </View>
-      <TrashIcon style={styles.trashIcon} onPress={onDelete} />
+      <TrashIcon style={styles.trashIcon} onPress={onDeletePress} />
     </View>
   );
 };
