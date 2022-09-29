@@ -1,6 +1,5 @@
 import React, {FC} from 'react';
 import {useState, useAppDispatch} from '../../hooks/hooks';
-import uuid from 'react-native-uuid';
 import {
   View,
   TextInput,
