@@ -18,4 +18,8 @@ const PlusIcon: FC<Props> = props => {
   return <FeatherIcon name="plus-circle" size={size} {...props} />;
 };
 
-export {CheckIcon, CircleIcon, PlusIcon};
+const TrashIcon: FC<Props> = props => {
+  return <FeatherIcon name="trash" size={size} {...props} />;
+};
+
+export {CheckIcon, CircleIcon, PlusIcon, TrashIcon};

@@ -17,6 +17,8 @@ const addItem = createAction<PrepareAction<TodoItem>>(
 
 const changeItemStatus = createAction<TodoItem['id']>(ActionType.CHANGE_STATUS);
 
+const removeItemById = createAction<TodoItem['id']>(ActionType.REMOVE_ITEM);
+
 const resetItemsList = createAction(ActionType.RESET_LIST);
 
-export {addItem, changeItemStatus, resetItemsList};
+export {addItem, changeItemStatus, resetItemsList, removeItemById};

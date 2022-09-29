@@ -4,11 +4,13 @@ import {colors} from '../../../../common/constants/colors';
 const createStyles = (done: boolean) => {
   return StyleSheet.create({
     wrapper: {
-      width: '100%',
       backgroundColor: done ? colors.green : colors.white,
-      flexDirection: 'row',
       borderRadius: 15,
       padding: 7,
+    },
+    cardContentWrapper: {
+      width: '100%',
+      flexDirection: 'row',
       justifyContent: 'space-between',
     },
     checkIcon: {
@@ -38,6 +40,10 @@ const createStyles = (done: boolean) => {
       borderRadius: 50,
       alignSelf: 'center',
       resizeMode: 'contain',
+    },
+    trashIcon: {
+      alignSelf: 'flex-end',
+      marginTop: 8,
     },
   });
 };

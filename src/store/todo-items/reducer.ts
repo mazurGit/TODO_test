@@ -1,5 +1,10 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {addItem, changeItemStatus, resetItemsList} from './action';
+import {
+  addItem,
+  changeItemStatus,
+  resetItemsList,
+  removeItemById,
+} from './action';
 import {TodoItem} from '../../common/types/types';
 
 type InitialState = {
@@ -24,6 +29,9 @@ const reducer = createReducer(initialState, builder => {
     })
     .addCase(resetItemsList, () => {
       return {...initialState};
+    })
+    .addCase(removeItemById, (state, action) => {
+      state.items = [...state.items.filter(item => item.id !== action.payload)];
     });
 });
 
