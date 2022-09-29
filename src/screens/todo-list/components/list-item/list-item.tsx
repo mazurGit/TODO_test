@@ -34,8 +34,8 @@ const ListItem: FC<Props> = ({item, contentContainerStyle}) => {
   };
 
   return (
-    <View style={styles.wrapper}>
-      <View style={[styles.cardContentWrapper, contentContainerStyle]}>
+    <View style={[styles.wrapper, contentContainerStyle]}>
+      <View style={styles.cardContentWrapper}>
         <TouchableOpacity onPress={onPressComplete} style={styles.checkIcon}>
           {done ? <CheckIcon /> : <CircleIcon />}
         </TouchableOpacity>
