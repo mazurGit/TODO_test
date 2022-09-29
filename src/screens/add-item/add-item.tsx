@@ -43,7 +43,6 @@ const AddItem: FC = () => {
         title,
         description,
         image: pictureUri,
-        id: uuid.v4().toString(),
         done: false,
       }),
     );
